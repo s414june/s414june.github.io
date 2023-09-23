@@ -1,0 +1,367 @@
+* {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Noto Sans TC", sans-serif;
+}
+html a {
+  color: #000;
+  text-decoration: none;
+  word-break: break-all;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+html a::selection {
+  background: transparent;
+}
+html a:hover {
+  background: transparent;
+}
+
+.logo {
+  font-family: "Lobster", cursive;
+}
+
+.navbar {
+  padding: 1rem;
+  width: calc(100vw - 2rem);
+  font-size: 2rem;
+  box-shadow: 0 1px 5px #aaa;
+  display: flex;
+  justify-content: space-between;
+  position: -webkit-sticky;
+  position: fixed;
+  top: 0;
+  z-index: 6;
+  background-color: #fff;
+  cursor: pointer;
+}
+.navbar .toggle-container {
+  padding-right: 1.8rem;
+}
+
+.menu {
+  padding: 3rem;
+  position: fixed;
+  top: 0;
+  width: 200px;
+  height: 100vh;
+  background-color: #ffffff;
+  box-shadow: -1px 5px 5px #aaa;
+  transform: translateX(100vw);
+  transition: 0.5s;
+  z-index: 30;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .menu {
+    width: 50vw;
+  }
+}
+.menu.active {
+  transform: translateX(calc(100vw - 200px - 6rem));
+  transition: 0.5s;
+}
+@media (max-width: 768px) {
+  .menu.active {
+    transform: translateX(calc(100vw - 50vw - 6rem));
+  }
+}
+.menu .logo {
+  font-size: 2rem;
+  font-weight: normal;
+  padding: 1rem;
+}
+.menu p {
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-family: "Noto Sans TC", sans-serif;
+  font-family: "Raleway", sans-serif;
+}
+
+.mask {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  z-index: 29;
+}
+
+main h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-family: "Noto Sans TC", sans-serif;
+  padding-bottom: 2rem;
+}
+main section {
+  padding: 3rem 0 0 0;
+}
+
+#about .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 50px;
+}
+#about .container img {
+  border-radius: 50%;
+  width: 200px;
+}
+#about .container .intro {
+  padding: 0.5rem 0;
+  text-align: center;
+  font-size: 1.2rem;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: 400;
+}
+#about .buttons {
+  font-family: "Noto Sans TC", sans-serif;
+  font-family: "Raleway", sans-serif;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#about .buttons span {
+  background-color: #000;
+  color: #fff;
+  border-radius: 6px;
+  padding: 0 0.7rem;
+  font-size: 1rem;
+  line-height: 2.6rem;
+  height: 2.6rem;
+  margin: 5px 0;
+}
+#about .buttons a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#about .buttons a i {
+  font-size: 2.5rem;
+  padding-left: 0.8rem;
+}
+@media (min-width: 576px) {
+  #about .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+#skills div {
+  background-image: url("../img/img (3).jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
+  text-align: center;
+  width: 100vw;
+  overflow: hidden;
+}
+#skills img {
+  width: 30%;
+  padding: 20px 25px;
+}
+#skills p {
+  font-size: 1rem;
+}
+@media (min-width: 576px) {
+  #skills img {
+    width: 100px;
+    padding: 60px 10px;
+  }
+  #skills p {
+    width: 400px;
+    font-size: 1.2rem;
+  }
+}
+
+#works .container,
+#others .container {
+  padding: 0 1rem;
+}
+#works .container .flex-item,
+#others .container .flex-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#works .container .flex-item p,
+#works .container .flex-item h3,
+#others .container .flex-item p,
+#others .container .flex-item h3 {
+  padding: 0 2rem;
+}
+#works .container .flex-item p .fa,
+#works .container .flex-item h3 .fa,
+#others .container .flex-item p .fa,
+#others .container .flex-item h3 .fa {
+  font-size: 14px;
+  transform: translateY(3px);
+  margin-right: 3px;
+}
+#works .container .flex-item p span,
+#works .container .flex-item h3 span,
+#others .container .flex-item p span,
+#others .container .flex-item h3 span {
+  display: inline-block;
+}
+#works .container .flex-item p span:not(:last-child),
+#works .container .flex-item h3 span:not(:last-child),
+#others .container .flex-item p span:not(:last-child),
+#others .container .flex-item h3 span:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+#works .container .flex-item p a,
+#works .container .flex-item h3 a,
+#others .container .flex-item p a,
+#others .container .flex-item h3 a {
+  text-decoration: underline;
+  font-size: 0.9em;
+  line-height: 1;
+}
+#works .container .flex-item img,
+#others .container .flex-item img {
+  width: 100%;
+  box-shadow: 2px 2px 5px #aaa;
+}
+#works .container .flex-item h3,
+#others .container .flex-item h3 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  padding-bottom: 1rem;
+}
+#works .container .flex-item > a,
+#others .container .flex-item > a {
+  position: relative;
+  margin: 10px;
+  padding: 30px;
+  display: flex;
+}
+#works .container .flex-item .work-mask,
+#others .container .flex-item .work-mask {
+  white-space: nowrap;
+  position: absolute;
+  opacity: 0;
+  width: calc(100% - 60px);
+  height: calc(100% - 60px);
+  top: 30px;
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1.5rem;
+  font-family: "Lobster", cursive;
+}
+#works .container .flex-item .work-mask.active,
+#others .container .flex-item .work-mask.active {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+}
+@media (min-width: 768px) {
+  #works .container .flex-item a,
+#others .container .flex-item a {
+    width: 300px;
+  }
+  #works .container .flex-item .work-mask,
+#others .container .flex-item .work-mask {
+    font-size: 2rem;
+  }
+  #works .container .work-detail,
+#others .container .work-detail {
+    width: 50%;
+  }
+}
+
+#others .container {
+  padding: 0;
+}
+#others .container .flex-item a {
+  width: 50%;
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+#others .container .flex-item video {
+  width: 100%;
+}
+#others .container .flex-item .work-mask {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  color: #000;
+}
+#others .container .flex-item .work-mask.active {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: 0.3s;
+}
+@media (min-width: 768px) {
+  #others .container .flex-item a {
+    width: 25%;
+  }
+}
+
+#contact {
+  padding-bottom: 3rem;
+}
+#contact > form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#contact label {
+  border: 0 0 1px 0;
+  margin: 1rem;
+  border-bottom: 2px solid #000;
+  width: 80%;
+  display: flex;
+}
+@media (min-width: 768px) {
+  #contact label {
+    width: 50%;
+  }
+}
+#contact label i {
+  font-size: 1.5rem;
+  padding-right: 1rem;
+}
+#contact input {
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  padding-bottom: 1rem;
+}
+#contact button {
+  background-color: #000;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  border-radius: 5px;
+}
+#contact button i {
+  font-size: 1rem;
+  padding-right: 10px;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  font-size: 0.8rem;
+}
+
+/*# sourceMappingURL=styles.css.map */

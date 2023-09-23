@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@700&family=Raleway:wght@600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <link rel="stylesheet" href="scss/styles.css">
+    <link rel="stylesheet" href="scss/carousel.css">
+    <script src="src/carouseljs.js"></script>
+
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous"> -->
+    <script src="https://kit.fontawesome.com/b64a171a96.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="img/june_wu.ico">
+    <title>June Wu | Web Developer</title>
+</head>
+
+
+<body>
+    <div id="app">
+        <header>
+            <div class='navbar sticky' id="home">
+                <a href="index.html">
+                    <p class="logo">June Wu</p>
+                </a>
+                <div class="toggle-container">
+                    <i class="fas fa-bars" @click='toggle'></i>
+                </div>
+            </div>
+            <div class="mask" v-show="isShow" @click='toggle'></div>
+            <div class='menu' :class={active:isShow}>
+                <p @click="goto('home')">Home</p>
+                <p @click="goto('about')">About me</p>
+                <p @click="goto('skills')">Skills</p>
+                <p @click="goto('works')">Works</p>
+                <p @click="goto('others')">Others</p>
+                <p @click="goto('contact')">Contact</p>
+            </div>
+            <section class="carouselOutside">
+                <div class="carousel carousel-ad">
+                    <div class="title">
+                        <h3 class="animate__animated animate__fadeInLeft">Reading, Painting, Coding</h3>
+                        <p class="animate__animated animate__fadeInRight">June Wu's portfolio</p>
+                    </div>
+                    <div class="click-down">
+                        <a @click="godown('about')" href="javascript:void(0)">
+                            <h4 class="animate__animated animate__bounce animate__infinite">
+                                <i class="fas fa-chevron-down"></i>
+                            </h4>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </header>
+        <main>
+            <section id="about">
+                <h2>About me</h2>
+                <div class="container">
+                    <div class="face">
+                        <img src="img/face.jpg" alt="June's face">
+                    </div>
+                    <div class="about-content">
+                        <div class="intro">
+                            <p>畢業於國北教育大學，語文與創作、數位科技設計雙主修。</p>
+                            <p>喜愛閱讀、繪畫、音樂等藝術，也熱愛科學。</p>
+                            <p>在程式語言中，找到了實踐藝術的樂趣。</p>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <!-- <a href="https://drive.google.com/file/d/1VxgCszJGc7sAQOX_lv6pTwrJT0wEx0ZM/view?usp=sharing" target="_blank">
+                            <span>
+                                View June's Resume
+                            </span>
+                        </a> -->
+                        <a href="https://github.com/s414june" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://codepen.io/s414june/" target="_blank">
+                            <i class="fab fa-codepen"></i>
+                        </a>
+                        <a href="https://tidy-marigold-dolphin-166.medium.com/" target="_blank">
+                            <i class="fa-brands fa-medium"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <section id="skills">
+                <h2>Skills</h2>
+                <div>
+                    <img src="img/skills/javascript.png" alt="javascript">
+                    <img src="img/skills/vue.png" alt="vue">
+                    <img src="img/skills/bootstrap.png" alt="bootstrap">
+                    <img src="img/skills/tailwind.png" alt="tailwind">
+                    <img src="img/skills/sass.png" alt="sass">
+                </div>
+            </section>
+            <section id="works">
+                <h2>Works</h2>
+                <div class="container">
+                    <div class="flex-item" v-for="(item,index) in works">
+                        <a :href="item.src" target="_blank">
+                            <img :src="item.img" alt="">
+                            <div class="work-mask" :class={active:isHover} @mouseover='showHover' @mouseout='hideHover'>
+                                {{item.english}}
+                            </div>
+                        </a>
+                        <div class="work-detail">
+                            <h3>{{item.title}}</h3>
+                            <p>
+                                {{item.content}}
+                                <br />
+                                <br />
+                                <span>
+                                    <i class="fa-solid fa-link fa"></i>
+                                    <a :href="item.src" target="_blank">{{item.src}}</a>
+                                </span>
+                                <br />
+                                <span>
+                                    <i class="fa-solid fa-code fa"></i>
+                                    <a :href="item.source_code" target="_blank">{{item.source_code}}</a>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="others">
+                <h2>Others</h2>
+                <div class="container">
+                    <div class="flex-item">
+                        <a v-for="(item,index) in others" :href="item.src" target="_blank">
+                            <img :src="item.video" :alt="item.english" loop="infinite">
+                            <div class="work-mask" :class={active:isHover} @mouseover='showHover' @mouseout='hideHover'>
+                                {{item.english}}
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <section id="contact">
+                <h2>Contact</h2>
+                <form action="https://formspree.io/f/xwkabgqr" method="POST">
+                    <label>
+                        <i class="fas fa-at"></i>
+                    <input type="email" name="_replyto" placeholder="Your Email">
+                    </label>
+                    <label>
+                        <i class="far fa-comment-dots"></i>
+                    <input type="text" name="message" placeholder="Your Message"></input>
+                    </label>
+                    <!-- your other form fields go here -->
+                    <button type="submit"><i class="fas fa-paper-plane"></i>Send</button>
+                </form>
+            </section>
+        </main>
+        <footer>© June Wu 2023 | All Rights Reserved</footer>
+    </div>
+
+
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                isShow: false,
+                isHover: false,
+                works: [{
+                    src: 'https://chatbot-qingyunke.great-site.net/',
+                    img: './img/works/chatbot-qingyunke.jpg',
+                    title: '[青雲客+繁化姬]聊天機器人',
+                    english: 'Chatbot Qingyunke',
+                    content: '順著ChatGpt等AI機器人的風潮，讓閒聊機器人跟你一起聊天！使用了青雲客進行機器人回應的串接，並使用繁化姬進行簡繁轉換。使用Vite+Vue3+Typescript+Tailwind開發。',
+                    source_code:'https://github.com/s414june/ChatBot_QingYunKe'
+                }, {
+                    src: 'https://s414june.github.io/SurveyFrog/',
+                    img: './img/works/my-first-vite.jpg',
+                    title: '問卷蛙 - 遊客滿意度調查',
+                    english: 'Survey Frog - Demo',
+                    content: '問卷可以說是最為實用的網頁工具之一，介面美化、驗證資料等都是非常重要的環節。問卷蛙使用Vue Router來切換不同頁面，並使用Vuex來進行狀態管理，增進程式管理效率！'
+                    ,source_code:'https://github.com/s414june/SurveyFrog'
+                }, {
+                    src: 'https://s414june.github.io/froggycoffee/',
+                    img: './img/works/froggycoffee.jpg',
+                    title: '雛蛙咖啡',
+                    english: 'froggy café',
+                    content: '文藝青年幾乎都有這樣一個夢想——開一家讀書咖啡廳。使用bootstrap和純javascript構建的購物車網頁，為前端demo。運用loaclstorage儲存資料，確認購買後會清空購物車。'
+                    ,source_code:'https://github.com/s414june/froggycoffee'
+                }, {
+                    src: 'https://s414june.github.io/greenpomo/',
+                    img: './img/works/greenpomo.jpg',
+                    title: '綠色番茄鐘',
+                    english: 'GreenPomo',
+                    content: '想要解決拖延症、提高工作效率的人，應該對番茄鐘不陌生？這個計時網頁可以讓使用者自訂倒數時間，為使用者倒數，並記錄做了幾個番茄，用譬喻的方式增加工作趣味。使用vue-cli製作。'
+                    ,source_code:'https://github.com/s414june/greenpomo'
+                }],
+                others: [{
+                    src: 'https://s414june.github.io/threejsFirstDemo/',
+                    video:'./video/threejsball.gif',
+                    english: 'Feel This Sphere'
+                }, {
+                    src: 'https://s414june.github.io/windmill-blender-threejs/',
+                    video:'./video/threejswind.gif',
+                    english: 'Windmill'
+                }, {
+                    src: 'https://s414june.github.io/ISBNscanner/',
+                    video:'./video/isbn.gif',
+                    english: 'ISBN Scanner'
+                }, {
+                    src: 'https://s414june.github.io/LseafletTest2/',
+                    video:'./video/leaflet.gif',
+                    english: 'Lseaflet Map'
+                }]
+            },
+            methods: {
+                toggle() {
+                    this.isShow = !this.isShow
+                },
+                godown(offset) {
+                    offset = document.querySelector('#' + offset)
+                    scrollTo(0, [offset][0].offsetTop - 47)
+                },
+                goto(offset) {
+                    offset = document.querySelector('#' + offset)
+                    scrollTo(0, [offset][0].offsetTop - 47)
+                    this.toggle()
+                },
+                showHover(e) {
+                    e.target.classList.add('active')
+                },
+                hideHover(e) {
+
+                    e.target.classList.remove('active')
+                }
+            }
+        })
+    </script>
+    <script>
+        let imgListAd = [{
+            imgUrl: 'img/img (1).jpg'
+        }, {
+            imgUrl: 'img/img (2).jpg'
+        }, {
+            imgUrl: 'img/img (3).jpg'
+        }]
+        let carousel1 = carousel('.carousel-ad', imgListAd)
+    </script>
+
+
+    <script src="src/scroll.js"></script>
+</body>
+
+</html>
